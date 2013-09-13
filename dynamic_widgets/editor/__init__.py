@@ -1,4 +1,6 @@
-from dynamic_widgets.models import Widget, DjangoTemplate
+from dynamic_widgets import get_widget_model, get_django_template_model
+Widget = get_widget_model()
+DjangoTemplate = get_django_template_model()
 
 editor_widget = Widget(
     identifier      = 'widget-editor',
