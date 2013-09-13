@@ -1,0 +1,107 @@
+{% load wording %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    {% for meta in template_meta %}
+	<meta name="{{ meta.name }}" content="{{ meta.content }}"/>
+    {% endfor %}
+	{% block sytles %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}style_3_2.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}themes/ui-lightness/jquery-ui-1.10.2.custom.min.css"/>
+	
+        <link rel="SHORTCUT ICON" href="{{ STATIC_URL }}favico.ico"/>{% endblock %}
+        {% block sytles2 %}{% endblock %}
+	{% block scripts %}
+
+        {% endblock %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.10.2.custom.min.js"></script>
+
+	
+    {% comment %}<script type="text/javascript" src="{{ STATIC_URL }}js/hoverPopup.js"></script>{% endcomment %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/core.js"></script>
+        {{template_script_style_|safe}}
+	<title>{% block title %}experience network{% endblock %}</title>
+</head>
+
+<body class='expn' {{template_body_tag}}>
+
+
+<div id="site-wrapper">
+
+	<div id="header">
+
+		<div id="top">
+
+
+		<div class="right" id="top-right">
+
+			<p class="small quiet">{% if user.is_ok %}<a href="/logout/">Logout</a> <span class="text-separator">|</span><a href="/help/">Hilfe</a> <span class="text-separator">|</span> <a id="feedback_button" href="/feedback/">Feedback</a>{% endif %} </p>
+
+		</div>
+				<div class="clearer">&nbsp;</div>
+
+			<div class="left" id="logo" style="position:relative;">
+				<a href="/"><img src="{{ STATIC_URL }}logo.png" alt="Logo" /></a>
+			</div>
+
+			<div class="left navigation" id="main-nav{% if not user.is_ok %}2{% endif %}" {% if user.is_superuser and false %}style="width:100%;"{% endif %}>
+
+                            
+
+			</div>
+
+				<div class="clearer">&nbsp;</div>
+
+		</div>
+
+            
+
+
+	</div>
+
+	<div class="main">
+		<div class="section">
+			
+			
+        {{ template }}
+
+
+		</div>
+
+	</div>
+
+
+	<div id="footer">
+
+		<div class="left" id="footer-left">
+
+			<img src="{{ STATIC_URL }}logo-small-sw.png" alt="" class="left" />
+			
+			<p>&copy; 2010-2011 experience network. All rights reserved</p>
+
+			<p class="quiet"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></p>
+			
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+		<div class="right" id="footer-right">
+
+			<p> <a href="/datenschutzbestimmung/">Datenschutzbestimmungen</a> <span class="text-separator">|</span> <a href="/impressum/">Impressum</a> {% if not user.is_ok %} <span class="text-separator">|</span> <a id="feedback_button"  href="/feedback/">Feedback</a>{% endif %}</p>
+
+		</div>
+
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+
+   <div id="feedback-form" style="display:None;" title="Feedback">
+		<label for="message">Dein Feedback hier:</label><br /><div id="loader" style="position:absolute;display:None;text-align:center;width:95%;"><img src="{{ STATIC_URL }}indicator.gif" alt='loading' /></div>
+                <textarea id="feedback_inwindow_textarea" class="text ui-widget-content ui-corner-all" rows="14" cols="48"></textarea>
+</div>
+</body>
+</html>
