@@ -31,9 +31,8 @@ class TemplateDetail(generics.RetrieveUpdateAPIView):
 
     model = get_django_template_model()
     serializer_class = serializers.DjangoTemplateSerializer
-    export_context = False
-    
-    
+    export_context = False    
+
 class ContentList(generics.ListCreateAPIView):
     """
     API endpoint that represents a list of entities.
